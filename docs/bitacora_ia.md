@@ -41,3 +41,24 @@ No encontramos errores.
 
 ## Validaciones realizadas
 Nos sirvió como aclaración respecto a algunas dudas que teníamos, sobre si ibamos bien o mal
+
+---
+## Prompt utilizado
+¿El archivo queue.c esta bien diseñado?, esto respetando la estructura del proyecto
+
+## Respuesta IA
+Si yo fuera ayudante de la materia: 9.5/10
+La única razón por la que no le doy 10 es porque me gusta más evitar los casts de malloc, pero funcionalmente no veo errores.
+Yo no tocaría más queue.c y pasaría al siguiente módulo
+
+
+## Errores encontrados
+No encontramos errores.
+
+## Correcciones realizadas
+...
+
+## Validaciones realizadas
+Nos sirvió como aclaración respecto a algunas dudas que teníamos.
+
+
