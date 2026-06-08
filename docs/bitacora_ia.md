@@ -24,7 +24,7 @@ Nos sirvió de aclaración para formar la estrucutra de nuestros archivos .h
 ## Prompt utilizado
 ¿La implementación de los archivos.h faltantes son correctoos respetandoo la estructura del proyecto? (le pasamos los archivos .h correspondientes)
 
-## Respuesa IA
+## Respuesta IA
 Si, en términos generales son correctos y coherentes con el proyecto. Yo les daria un 8.5/10 como diseño inicial.
 
 Lo que más me gusta es que:
