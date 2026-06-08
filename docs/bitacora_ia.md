@@ -61,4 +61,77 @@ No encontramos errores.
 ## Validaciones realizadas
 Nos sirvió como aclaración respecto a algunas dudas que teníamos.
 
+## Prompt utilizado
+Tratando de hacer git push sobre el repositorio nos salta un error, como podemos solucionarlo??
+
+## Respuesta IA
+Ese error es muy común cuando trabajan varias personas sobre el mismo repositorio.
+El mensaje clave es:
+```text
+! [rejected] main -> main (fetch first)
+```
+Git te está diciendo:
+> "El repositorio remoto tiene cambios que tú no tienes localmente."
+Probablemente alguno de tus compañeros hizo un `push` antes que tú.
+---
+Primero verifica el estado
+Ejecuta:
+```bash
+git status
+```
+y dime qué te aparece.
+---
+Lo más probable
+Normalmente se arregla con:
+```bash
+git pull origin main
+```
+Si Git puede fusionar los cambios automáticamente, después haces:
+```bash
+git push origin main
+```
+---
+Si aparece un error de "divergent branches"
+En versiones recientes de Git puede pedirte especificar la estrategia:
+```bash
+git pull origin main --rebase
+```
+Luego:
+```bash
+git push origin main
+```
+---
+Si hay conflictos
+Git mostrará algo como:
+```text
+CONFLICT (content): Merge conflict in src/queue.c
+```
+En ese caso:
+1. Editas los archivos con conflicto.
+2. Eliminas las marcas:
+```text
+<<<<<<< HEAD
+tu código
+=======
+código remoto
+>>>>>>> rama-remota
+```
+3. Guardas.
+4. Ejecutas:
+```bash
+git add .
+git commit -m "Resolver conflictos"
+git push origin main
+```
+
+## Errores encontrados
+No encontramos errores.
+
+## Correcciones realizadas
+...
+
+## Validaciones realizadas
+Esto nos ayudo bastante, como estamos ttrabajando en equipo, y el repositorio se esta actualizando constantemente, a veces no llegamos a tener la versión mas actualizada al momento de trabajar simultaneamente.
+
+
 
