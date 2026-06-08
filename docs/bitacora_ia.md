@@ -21,7 +21,7 @@ Nos sirvió de aclaración para formar la estrucutra de nuestros archivos .h
 ...
 
 ---
-##Prompt utilizado
+## Prompt utilizado
 ¿La implementación de los archivos.h faltantes son correctoos respetandoo la estructura del proyecto? (le pasamos los archivos .h correspondientes)
 
 ## Respuesa IA
@@ -29,7 +29,7 @@ Si, en términos generales son correctos y coherentes con el proyecto. Yo les da
 
 Lo que más me gusta es que:
 Process está exactamente alineado con lo que pide el proyecto.
-MemoryManager y MemoryBlock coinciden con la estructura sugerida.
+MemoryManager y MemoryBlock coinciden con la estructura sugerid a
  Las colas y listas trabajan con Process* , evitando duplicar procesos.
  La interfaz es modular, lo que facilita repartir el trabajo entre los integrantes.
 
