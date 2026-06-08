@@ -61,6 +61,7 @@ No encontramos errores.
 ## Validaciones realizadas
 Nos sirvió como aclaración respecto a algunas dudas que teníamos.
 
+---
 ## Prompt utilizado
 Tratando de hacer git push sobre el repositorio nos salta un error, como podemos solucionarlo??
 
