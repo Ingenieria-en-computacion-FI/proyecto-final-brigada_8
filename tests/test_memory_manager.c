@@ -1,6 +1,7 @@
 #include <assert.h>
 #include "memory_manager.h"
 
+
 void test_first_fit() {
     MemoryManager* mm = mm_create(1024);
 
@@ -18,3 +19,4 @@ void test_first_fit() {
 
     mm_destroy(mm);
 }
+

@@ -1,5 +1,7 @@
 # Bitácora IA
 
+# PROMPT 1
+
 ## Prompt utilizado
 ¿Cómo hacer la estructura de los demás archivos .h de forma que se complementen correctamente sin ser demasiado repetitivos?
 ...
@@ -21,6 +23,7 @@ Nos sirvió de aclaración para formar la estrucutra de nuestros archivos .h
 ...
 
 ---
+# PROMPT 2
 ## Prompt utilizado
 ¿La implementación de los archivos.h faltantes son correctoos respetandoo la estructura del proyecto? (le pasamos los archivos .h correspondientes)
 
@@ -41,8 +44,9 @@ No encontramos errores.
 
 ## Validaciones realizadas
 Nos sirvió como aclaración respecto a algunas dudas que teníamos, sobre si ibamos bien o mal
-
 ---
+
+# PROMPT 3
 ## Prompt utilizado
 ¿El archivo queue.c esta bien diseñado?, esto respetando la estructura del proyecto
 
@@ -62,6 +66,7 @@ No encontramos errores.
 Nos sirvió como aclaración respecto a algunas dudas que teníamos.
 
 ---
+# PROMPT 4
 ## Prompt utilizado
 Tratando de hacer git push sobre el repositorio nos salta un error, como podemos solucionarlo??
 
@@ -133,6 +138,24 @@ No encontramos errores.
 
 ## Validaciones realizadas
 Esto nos ayudo bastante, como estamos ttrabajando en equipo, y el repositorio se esta actualizando constantemente, a veces no llegamos a tener la versión mas actualizada al momento de trabajar simultaneamente.
+___
+# PROMPT 5
 
+## Prompt utilizado
+ Implementa memory_manager.c haciendo uso de las especificaciones de este .h (intoducimos el memory_manager.h que ya tenemos) y que sea capaz de funcionar al probarlo con el siguiente test (introducimos el test que viene en el github)
+
+## Respuesta IA
+Eso significa que mm_allocate_first_fit() no está devolviendo un PID, sino la dirección inicial (start) del bloque asignado.
+Por lo tanto, mm_free() buscará el bloque usando ese valor como identificador.
+Una implementación de memory_manager.c que cumple con el .h y pasa ese test sería: (nos dió memory_manager.c) 
+
+## Errores encontrados
+No dio errores
+
+## Correciones realizadas
+Se corrigió momentaneamente el test_memory_manager.c agregandole un main para poder probar nuestro codigo
+
+## Validaciones realizadas
+Como hay un test para memory_manager, decidimos realizar una prueba para nuestro codigo, sin embargo modificamos un poco el test para poder realizarlo, despues de comprobar que la implementación funciona bien, volvimos al test original para evitar errores
 
 

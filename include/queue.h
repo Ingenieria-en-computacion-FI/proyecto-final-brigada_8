@@ -1,22 +1,16 @@
 #ifndef QUEUE_H
 #define QUEUE_H
 
-#include "process.h"
-
 typedef struct Queue Queue;
 
 Queue* queue_create();
 
-void queue_enqueue(
+void enqueue(
     Queue* queue,
-    Process* process
+    int value
 );
 
-Process* queue_dequeue(
-    Queue* queue
-);
-
-Process* queue_front(
+int dequeue(
     Queue* queue
 );
 

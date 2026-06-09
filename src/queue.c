@@ -1,15 +1,15 @@
 #include <stdlib.h>
 #include "queue.h"
 
-/* Nodo interno de la cola */
+/* Nodo */
 typedef struct QueueNode {
 
-    Process* process;
+    int value;
     struct QueueNode* next;
 
 } QueueNode;
 
-/* Definición real de Queue */
+/* Cola */
 struct Queue {
 
     QueueNode* front;
@@ -17,10 +17,10 @@ struct Queue {
 
 };
 
-/* Crear cola vacía */
+/* Crear cola */
 Queue* queue_create() {
 
-    Queue* queue = (Queue*) malloc(sizeof(Queue));
+    Queue* queue = malloc(sizeof(Queue));
 
     if (queue == NULL)
         return NULL;
@@ -32,7 +32,9 @@ Queue* queue_create() {
 }
 
 /* Verificar si está vacía */
-int queue_is_empty(Queue* queue) {
+int queue_is_empty(
+    Queue* queue
+) {
 
     if (queue == NULL)
         return 1;
@@ -40,25 +42,24 @@ int queue_is_empty(Queue* queue) {
     return queue->front == NULL;
 }
 
-/* Insertar al final */
-void queue_enqueue(
+/* Insertar */
+void enqueue(
     Queue* queue,
-    Process* process
+    int value
 ) {
 
-    if (queue == NULL || process == NULL)
+    if (queue == NULL)
         return;
 
     QueueNode* new_node =
-        (QueueNode*) malloc(sizeof(QueueNode));
+        malloc(sizeof(QueueNode));
 
     if (new_node == NULL)
         return;
 
-    new_node->process = process;
+    new_node->value = value;
     new_node->next = NULL;
 
-    /* Cola vacía */
     if (queue->rear == NULL) {
 
         queue->front = new_node;
@@ -71,17 +72,17 @@ void queue_enqueue(
     queue->rear = new_node;
 }
 
-/* Eliminar del frente */
-Process* queue_dequeue(
+/* Eliminar */
+int dequeue(
     Queue* queue
 ) {
 
     if (queue_is_empty(queue))
-        return NULL;
+        return -1;
 
     QueueNode* temp = queue->front;
 
-    Process* process = temp->process;
+    int value = temp->value;
 
     queue->front = queue->front->next;
 
@@ -90,18 +91,7 @@ Process* queue_dequeue(
 
     free(temp);
 
-    return process;
-}
-
-/* Consultar el frente sin eliminar */
-Process* queue_front(
-    Queue* queue
-) {
-
-    if (queue_is_empty(queue))
-        return NULL;
-
-    return queue->front->process;
+    return value;
 }
 
 /* Liberar memoria */
@@ -113,7 +103,7 @@ void queue_destroy(
         return;
 
     while (!queue_is_empty(queue))
-        queue_dequeue(queue);
+        dequeue(queue);
 
     free(queue);
 }
