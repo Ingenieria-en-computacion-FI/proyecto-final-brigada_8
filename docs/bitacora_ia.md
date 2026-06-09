@@ -157,5 +157,30 @@ Se corrigió momentaneamente el test_memory_manager.c agregandole un main para p
 
 ## Validaciones realizadas
 Como hay un test para memory_manager, decidimos realizar una prueba para nuestro codigo, sin embargo modificamos un poco el test para poder realizarlo, despues de comprobar que la implementación funciona bien, volvimos al test original para evitar errores
+___
 
+# PROMPT 6
 
+## Promp utilizado
+Ahora empezaremos a implementar el scheduler, dime con cual parte empezaremos y te doy los archivos anteriores necesarios para la implementación.
+
+## Respuesta IA
+
+El siguiente módulo que más valor aporta al proyecto es:
+
+src/scheduler/fifo.c
+
+¿Por qué?
+
+Es el scheduler más sencillo.
+Les permite empezar a simular procesos.
+Después Round Robin será mucho más fácil porque reutiliza la lógica.
+
+## Errores encontrados
+Para implementarlo, se necesitaba el scheduler.h, process.h y test_scheduler.c al analizarlos, se notaron errores en la implementacion de scheduler. por lo que fueron corregidos para que la implementacion de fifo.c fuera correcta y coincida con nuestro test
+
+## Correcciones Realizadas
+Se cambió scheduler.h para que coincida con nuestro test para fifo.c, además se modificó temporalmente el test para probar la función entregada por la IA
+
+## Validaciones realizadas
+Usando el test_scheduler.c modificado, pudimos validar el correcto funcionamiento de nuestro fifo.c lo que a su vez confirma que scheduler.h ahora si estaba bien implementado

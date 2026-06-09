@@ -1,22 +1,22 @@
 #ifndef SCHEDULER_H
 #define SCHEDULER_H
 
-#include "process.h"
+typedef struct Scheduler Scheduler;
 
-void fifo_schedule(
-    Process processes[],
-    int count
+Scheduler* scheduler_create_fifo();
+
+void scheduler_add_process(
+    Scheduler* scheduler,
+    int pid,
+    int burst_time
 );
 
-void round_robin_schedule(
-    Process processes[],
-    int count,
-    int quantum
+int scheduler_next(
+    Scheduler* scheduler
 );
 
-void sjf_schedule(
-    Process processes[],
-    int count
+void scheduler_destroy(
+    Scheduler* scheduler
 );
 
 #endif
