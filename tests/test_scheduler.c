@@ -1,6 +1,5 @@
 #include <assert.h>
 #include "scheduler.h"
-#include<stdio.h>
 
 void test_fifo_scheduler() {
     Scheduler* scheduler = scheduler_create_fifo();
