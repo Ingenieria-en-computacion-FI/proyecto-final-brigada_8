@@ -1,7 +1,9 @@
 #include <assert.h>
+#include <stdio.h>
 #include "circular_queue.h"
 
 void test_round_robin_behavior() {
+
     CircularQueue* q = cq_create(3);
 
     cq_enqueue(q, 1);
@@ -17,4 +19,13 @@ void test_round_robin_behavior() {
     assert(cq_dequeue(q) == 4);
 
     cq_destroy(q);
+}
+
+int main() {
+
+    test_round_robin_behavior();
+
+    printf("Test Circular Queue OK\n");
+
+    return 0;
 }

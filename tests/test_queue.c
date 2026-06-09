@@ -1,7 +1,9 @@
 #include <assert.h>
+#include <stdio.h>
 #include "queue.h"
 
 void test_queue_fifo() {
+
     Queue* queue = queue_create();
 
     enqueue(queue, 1);
@@ -13,4 +15,13 @@ void test_queue_fifo() {
     assert(dequeue(queue) == 3);
 
     queue_destroy(queue);
+}
+
+int main() {
+
+    test_queue_fifo();
+
+    printf("Test Queue OK\n");
+
+    return 0;
 }
