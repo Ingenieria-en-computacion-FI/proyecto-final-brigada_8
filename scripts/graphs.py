@@ -32,5 +32,5 @@ plt.savefig(
 )
 
 print(
-    "Graphs saved"
+    "Graficas guardadas."
 )

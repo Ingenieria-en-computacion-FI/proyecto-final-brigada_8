@@ -17,7 +17,7 @@ int main(
         memory_size = atoi(argv[1]);
 
     printf(
-        "\n===============================================\n"
+        "\n================================================\n"
     );
     printf(
         "      SIMULADOR DE MINI SISTEMA OPERATIVO\n"
