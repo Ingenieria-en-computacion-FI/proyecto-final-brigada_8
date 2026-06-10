@@ -20,12 +20,3 @@ void test_round_robin_behavior() {
 
     cq_destroy(q);
 }
-
-int main() {
-
-    test_round_robin_behavior();
-
-    printf("Test Circular Queue OK\n");
-
-    return 0;
-}

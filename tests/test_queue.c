@@ -16,12 +16,3 @@ void test_queue_fifo() {
 
     queue_destroy(queue);
 }
-
-int main() {
-
-    test_queue_fifo();
-
-    printf("Test Queue OK\n");
-
-    return 0;
-}
