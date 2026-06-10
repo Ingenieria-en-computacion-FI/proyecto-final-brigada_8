@@ -184,3 +184,34 @@ Se cambió scheduler.h para que coincida con nuestro test para fifo.c, además s
 
 ## Validaciones realizadas
 Usando el test_scheduler.c modificado, pudimos validar el correcto funcionamiento de nuestro fifo.c lo que a su vez confirma que scheduler.h ahora si estaba bien implementado
+
+---
+
+# PROMPT 7
+No hay nada hecho para los archivos de Python, habría que hacerlos desde cero. La carpeta scripts debe contener:
+
+- benchmark.py
+- generate_processes.py
+- graphs.py
+- validate_results.py
+
+Además es obligatorio usar matplotlib para las gráficas.
+
+### Respuesta IA
+La IA explicó la función esperada de cada script:
+
+- generate_processes.py: generar conjuntos de procesos de prueba.
+- benchmark.py: ejecutar y medir el rendimiento de los algoritmos.
+- validate_results.py: verificar la consistencia de los resultados obtenidos.
+- graphs.py: generar gráficas a partir de los datos recolectados utilizando matplotlib.
+
+### Errores encontrados
+- No existía implementación inicial para los scripts de análisis.
+- No estaba claro el propósito de cada archivo.
+
+### Correcciones realizadas
+- Se definió la estructura base de la carpeta scripts.
+- Se identificó matplotlib como dependencia obligatoria para la generación de gráficas.
+
+### Validaciones realizadas
+- Se verificó que la estructura de directorios coincidiera con la especificación del proyecto.
