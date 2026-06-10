@@ -215,3 +215,163 @@ La IA explicó la función esperada de cada script:
 
 ### Validaciones realizadas
 - Se verificó que la estructura de directorios coincidiera con la especificación del proyecto.
+
+---
+
+# PROMPT 8
+
+## Prompt utilizado
+
+¿Cómo implementar `graphs.py` para leer los resultados de `benchmark.csv` y generar gráficas usando matplotlib?
+
+## Respuesta IA
+
+La IA propuso utilizar `pandas` para leer el archivo CSV y `matplotlib` para generar una gráfica de líneas mostrando el tamaño de entrada contra el tiempo de ejecución.
+
+También sugirió guardar la gráfica en:
+
+```text
+reports/png/benchmark.png
+```
+
+## Errores encontrados
+
+Inicialmente la gráfica no se generaba porque la carpeta de destino no existía correctamente.
+
+## Correcciones realizadas
+
+Se verificó la estructura de carpetas dentro de `reports` y se corrigió la creación de directorios.
+
+## Validaciones realizadas
+
+Se ejecutó:
+
+```bash
+python3 scripts/graphs.py
+```
+
+y se comprobó la generación correcta de `benchmark.png`.
+
+---
+
+# PROMPT 9
+
+## Prompt utilizado
+
+Al ejecutar `graphs.py` no se genera ningún archivo PNG. ¿Cómo identificar el problema?
+
+## Respuesta IA
+
+La IA sugirió verificar:
+
+* Existencia del archivo CSV.
+* Ruta correcta del directorio de salida.
+* Permisos de escritura.
+* Mensajes de error de Python.
+
+## Errores encontrados
+
+La carpeta `reports/png` había sido creada accidentalmente como archivo en lugar de directorio.
+
+## Correcciones realizadas
+
+Se eliminaron los archivos incorrectos y se recreó la estructura:
+
+```text
+reports/
+├── csv/
+├── png/
+└── pdf/
+```
+
+## Validaciones realizadas
+
+La gráfica se generó correctamente después de corregir la estructura.
+
+---
+
+# PROMPT 10
+
+## Prompt utilizado
+
+¿Cómo implementar la operación de coalescencia dentro del administrador de memoria?
+
+## Respuesta IA
+
+La IA explicó que la coalescencia consiste en unir bloques libres adyacentes para reducir la fragmentación externa.
+
+Se propuso recorrer la lista doblemente enlazada y fusionar bloques consecutivos marcados como libres.
+
+## Errores encontrados
+
+No existía implementación previa.
+
+## Correcciones realizadas
+
+Se implementó `mm_coalesce()` dentro de `memory_manager.c`.
+
+## Validaciones realizadas
+
+Se recompiló el proyecto y las pruebas continuaron pasando correctamente.
+
+---
+
+# PROMPT 11
+
+## Prompt utilizado
+
+¿Cómo implementar la compactación de memoria respetando la estructura actual del proyecto?
+
+## Respuesta IA
+
+La IA sugirió desplazar los bloques ocupados hacia el inicio de la memoria y consolidar el espacio libre restante en un único bloque.
+
+## Errores encontrados
+
+La función no existía originalmente en la implementación.
+
+## Correcciones realizadas
+
+Se agregó `mm_compact()` al archivo `memory_manager.c` y su declaración correspondiente en `memory_manager.h`.
+
+## Validaciones realizadas
+
+La compilación mediante:
+
+```bash
+make
+```
+
+se realizó sin errores.
+
+---
+
+# PROMPT 12
+
+## Prompt utilizado
+
+Al ejecutar `make test` aparece un error indicando múltiples definiciones de `main`.
+
+## Respuesta IA
+
+La IA identificó que tanto `tests/main.c` como `src/main.c` estaban siendo enlazados simultáneamente.
+
+## Errores encontrados
+
+Error del linker:
+
+```text
+multiple definition of 'main'
+```
+
+## Correcciones realizadas
+
+Se modificó el Makefile para excluir `src/main.c` durante la compilación de las pruebas.
+
+## Validaciones realizadas
+
+Las pruebas volvieron a ejecutarse correctamente utilizando:
+
+```bash
+make test
+```
