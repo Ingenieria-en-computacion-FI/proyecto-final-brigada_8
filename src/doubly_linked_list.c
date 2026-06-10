@@ -1,4 +1,7 @@
 #include "doubly_linked_list.h"
+#include <stdlib.h>
+#include "algorithms.h"
+
 
 void dll_insert_after(
     MemoryBlock* block,
