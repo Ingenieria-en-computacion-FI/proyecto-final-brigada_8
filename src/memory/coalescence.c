@@ -1,13 +1,9 @@
 #include "memory_manager.h"
 
 /*
-Implementar unión de bloques libres.
+La funcionalidad de coalescence
+ya se encuentra implementada
+en memory_manager.c mediante:
 
-Ejemplo:
-
-[P1][Libre][Libre][P2]
-
-↓
-
-[P1][Libre Grande][P2]
+void mm_coalesce(...)
 */
