@@ -41,6 +41,10 @@ void mm_coalesce(
     MemoryManager* mm
 );
 
+void mm_compact(
+    MemoryManager* mm
+);
+
 void mm_destroy(
     MemoryManager* mm
 );

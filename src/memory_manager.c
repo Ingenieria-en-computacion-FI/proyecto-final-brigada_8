@@ -145,6 +145,87 @@ void mm_coalesce(
     }
 }
 
+void mm_compact(
+    MemoryManager* mm
+) {
+
+    if (mm == NULL)
+        return;
+
+    MemoryBlock* current = mm->head;
+
+    int next_start = 0;
+
+    /* Reacomodar bloques ocupados */
+    while (current != NULL) {
+
+        if (!current->free) {
+
+            current->start = next_start;
+
+            next_start += current->size;
+        }
+
+        current = current->next;
+    }
+
+    /* Eliminar bloques libres existentes */
+    current = mm->head;
+
+    while (current != NULL) {
+
+        MemoryBlock* next = current->next;
+
+        if (current->free) {
+
+            if (current->prev != NULL)
+                current->prev->next = current->next;
+            else
+                mm->head = current->next;
+
+            if (current->next != NULL)
+                current->next->prev = current->prev;
+
+            free(current);
+        }
+
+        current = next;
+    }
+
+    /* Crear un único bloque libre al final */
+    MemoryBlock* free_block =
+        (MemoryBlock*) malloc(sizeof(MemoryBlock));
+
+    if (free_block == NULL)
+        return;
+
+    free_block->start = next_start;
+
+    free_block->size =
+        mm->total_memory - next_start;
+
+    free_block->free = 1;
+    free_block->pid = -1;
+
+    free_block->next = NULL;
+    free_block->prev = NULL;
+
+    if (mm->head == NULL) {
+
+        mm->head = free_block;
+
+    } else {
+
+        MemoryBlock* tail = mm->head;
+
+        while (tail->next != NULL)
+            tail = tail->next;
+
+        tail->next = free_block;
+        free_block->prev = tail;
+    }
+}
+
 void mm_destroy(
     MemoryManager* mm
 ) {
