@@ -2,6 +2,7 @@
 #define ALGORITHMS_H
 
 #include "memory_manager.h"
+#include <stdlib.h>
 
 /* Greedy */
 
