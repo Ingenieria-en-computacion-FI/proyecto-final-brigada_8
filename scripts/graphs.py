@@ -21,11 +21,16 @@ plt.title("Benchmark Results")
 
 plt.grid(True)
 
-# Guardar gráfica
+# Guardar gráfica en png
 plt.savefig(
     "reports/png/benchmark.png"
 )
 
+# Guardar gráfica en png
+plt.savefig(
+    "reports/pdf/benchmark.pdf"
+)
+
 print(
-    "Graph saved to reports/png/benchmark.png"
+    "Graphs saved"
 )
