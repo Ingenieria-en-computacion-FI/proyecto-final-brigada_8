@@ -25,4 +25,8 @@ void list_destroy(
     LinkedList* list
 );
 
+Process* list_pop_front(
+    LinkedList* list
+);
+
 #endif
