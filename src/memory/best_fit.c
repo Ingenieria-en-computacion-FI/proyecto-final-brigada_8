@@ -1,4 +1,6 @@
 #include "algorithms.h"
+#include <stdlib.h>
+#include "algorithms.h"
 
 MemoryBlock* best_fit(
     MemoryManager* mm,
