@@ -4,6 +4,7 @@
 #include "scheduler.h"
 #include "memory_manager.h"
 #include "timer.h"
+#include "logger.h"
 
 int main(
     int argc,
@@ -16,18 +17,22 @@ int main(
         memory_size = atoi(argv[1]);
 
     printf(
-        "\n=================================\n"
+        "\n===============================================\n"
     );
     printf(
         "      SIMULADOR DE MINI SISTEMA OPERATIVO\n"
     );
     printf(
-        "=================================\n\n"
+        "================================================\n\n"
     );
 
     printf(
-        "Memory Size: %d\n\n",
+        "Tamaño de memoria: %d\n\n",
         memory_size
+    );
+
+    log_message(
+        "Simulacion iniciada"
     );
 
     timer_start();
@@ -41,7 +46,11 @@ int main(
     if (mm == NULL) {
 
         printf(
-            "Error creando memory manager\n"
+            "Error creando administrador de memoria\n"
+        );
+
+        log_message(
+            "Error creando administrador de memoria"
         );
 
         return 1;
@@ -59,7 +68,12 @@ int main(
             "Error creando scheduler\n"
         );
 
+        log_message(
+            "Error creando scheduler"
+        );
+
         mm_destroy(mm);
+
         return 1;
     }
 
@@ -67,7 +81,7 @@ int main(
      * Crear procesos
      */
     printf(
-        "Creando proceso...\n"
+        "Creando procesos...\n"
     );
 
     scheduler_add_process(
@@ -88,16 +102,20 @@ int main(
         8
     );
 
-    printf(
-        "PID 1 | Burst 10 | Memoria 100\n"
+    log_message(
+        "Procesos creados"
     );
 
     printf(
-        "PID 2 | Burst 5 | Memoria 200\n"
+        "PID 1 | Rafaga 10 | Memoria 100\n"
     );
 
     printf(
-        "PID 3 | Burst 8 | Memoria 150\n"
+        "PID 2 | Rafaga 5 | Memoria 200\n"
+    );
+
+    printf(
+        "PID 3 | Rafaga 8 | Memoria 150\n"
     );
 
     /*
@@ -125,6 +143,10 @@ int main(
             150
         );
 
+    log_message(
+        "Memoria asignada"
+    );
+
     printf(
         "Bloque asignado en %d\n",
         pid1
@@ -141,7 +163,7 @@ int main(
     );
 
     /*
-     * Simular fragmentación
+     * Simular fragmentacion
      */
     printf(
         "\nLiberando un proceso...\n"
@@ -153,33 +175,45 @@ int main(
     );
 
     printf(
-        "Block %d freed\n",
+        "Bloque %d liberado\n",
         pid2
+    );
+
+    log_message(
+        "Bloque de memoria liberado"
     );
 
     /*
      * Coalescencia
      */
     printf(
-        "\nEjecutando coalescence...\n"
+        "\nEjecutando coalescencia...\n"
     );
 
     mm_coalesce(mm);
 
+    log_message(
+        "Coalescencia ejecutada"
+    );
+
     /*
-     * Compactación
+     * Compactacion
      */
     printf(
-        "Ejecutando compactation...\n"
+        "Ejecutando compactacion...\n"
     );
 
     mm_compact(mm);
+
+    log_message(
+        "Compactacion ejecutada"
+    );
 
     /*
      * Scheduler FIFO
      */
     printf(
-        "\nOrden de ejecucion de FIFO:\n"
+        "\nOrden de ejecucion FIFO:\n"
     );
 
     int pid;
@@ -198,6 +232,10 @@ int main(
         );
     }
 
+    log_message(
+        "Planificacion FIFO completada"
+    );
+
     double elapsed =
         timer_stop();
 
@@ -208,6 +246,10 @@ int main(
 
     printf(
         "\nSimulacion completada exitosamente.\n"
+    );
+
+    log_message(
+        "Simulacion finalizada"
     );
 
     scheduler_destroy(
