@@ -88,6 +88,16 @@ void sjf_destroy(
     if (scheduler == NULL)
         return;
 
+    Process* p;
+
+    while ((p =
+            list_pop_front(
+                scheduler->ready_list))
+            != NULL) {
+
+        free(p);
+    }
+
     list_destroy(
         scheduler->ready_list
     );
