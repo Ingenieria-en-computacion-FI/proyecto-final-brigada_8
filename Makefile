@@ -2,6 +2,8 @@ CC=gcc
 CFLAGS=-Wall -Wextra -std=c11 -Iinclude
 
 SRC=$(wildcard src/**/*.c src/*.c)
+SRC_NO_MAIN=$(filter-out src/main.c,$(SRC))
+
 TESTS=$(wildcard tests/*.c)
 
 all:
@@ -13,7 +15,7 @@ run:
 
 test:
 	mkdir -p bin
-	$(CC) $(CFLAGS) $(TESTS) $(SRC) -o bin/tests
+	$(CC) $(CFLAGS) $(TESTS) $(SRC_NO_MAIN) -o bin/tests
 	./bin/tests
 
 clean:
