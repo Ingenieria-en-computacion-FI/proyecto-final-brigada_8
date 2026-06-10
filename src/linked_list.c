@@ -138,3 +138,23 @@ void list_destroy(
 
     free(list);
 }
+
+
+/*Para facilitar la construcción de sjf*/
+Process* list_pop_front(
+    LinkedList* list
+) {
+
+    if (list == NULL || list->head == NULL)
+        return NULL;
+
+    Node* temp = list->head;
+
+    Process* process = temp->process;
+
+    list->head = temp->next;
+
+    free(temp);
+
+    return process;
+}
