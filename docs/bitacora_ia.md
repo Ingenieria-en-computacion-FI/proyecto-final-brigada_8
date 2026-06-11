@@ -375,3 +375,189 @@ Las pruebas volvieron a ejecutarse correctamente utilizando:
 ```bash
 make test
 ```
+---
+
+# PROMPT 13
+
+## Prompt utilizado
+
+Durante la implementación de `memory_manager.c`, ¿la función `mm_allocate_first_fit()` debe devolver el PID del proceso o la dirección inicial del bloque asignado?
+
+## Respuesta IA
+
+La IA explicó que, de acuerdo con la lógica utilizada en los tests proporcionados para el proyecto, la función no debía devolver un PID sino la dirección inicial (`start`) del bloque asignado.
+
+Además indicó que posteriormente `mm_free()` utilizaría ese valor para localizar y liberar el bloque correspondiente.
+
+## Errores encontrados
+
+Existía confusión sobre qué valor debía devolver la función de asignación de memoria.
+
+## Correcciones realizadas
+
+Se modificó la implementación para devolver la dirección inicial del bloque asignado en lugar de un identificador de proceso.
+
+## Validaciones realizadas
+
+Se ejecutaron las pruebas del administrador de memoria y se comprobó que la asignación y liberación funcionaban correctamente.
+
+---
+
+# PROMPT 14
+
+## Prompt utilizado
+
+¿Cómo validar que la implementación de `mm_free()` libera correctamente los bloques de memoria sin afectar la estructura de la lista enlazada?
+
+## Respuesta IA
+
+La IA sugirió realizar pruebas liberando bloques previamente asignados y verificando que:
+
+* El bloque cambiara a estado libre.
+* Los bloques vecinos permanecieran intactos.
+* La lista enlazada mantuviera su integridad.
+
+También recomendó probar posteriormente la coalescencia para verificar el comportamiento conjunto.
+
+## Errores encontrados
+
+No existía una validación clara sobre el comportamiento de la liberación de memoria.
+
+## Correcciones realizadas
+
+Se realizaron pruebas utilizando bloques asignados previamente dentro del administrador de memoria.
+
+## Validaciones realizadas
+
+Las pruebas confirmaron que los bloques eran liberados correctamente y podían reutilizarse en futuras asignaciones.
+
+---
+
+# PROMPT 15
+
+## Prompt utilizado
+
+Al ejecutar `make test` aparece un error indicando múltiples definiciones de `main`. ¿Cómo solucionarlo?
+
+## Respuesta IA
+
+La IA identificó que el ejecutable de pruebas estaba compilando simultáneamente `tests/main.c` y `src/main.c`, provocando un conflicto durante el enlazado.
+
+## Errores encontrados
+
+El compilador mostraba un error similar a:
+
+```text
+multiple definition of 'main'
+```
+
+## Correcciones realizadas
+
+Se modificó el Makefile para excluir `src/main.c` de la compilación de los tests y utilizar únicamente el archivo principal de pruebas.
+
+## Validaciones realizadas
+
+La ejecución de:
+
+```bash
+make test
+```
+
+volvió a completarse correctamente.
+
+---
+
+# PROMPT 16
+
+## Prompt utilizado
+
+¿Cómo adaptar el Makefile para compilar automáticamente los nuevos archivos de algoritmos implementados en `src/algorithms/`?
+
+## Respuesta IA
+
+La IA recomendó agregar los nuevos archivos fuente a la variable correspondiente del Makefile para que fueran incluidos durante la compilación del proyecto.
+
+## Errores encontrados
+
+Los archivos recién implementados no estaban siendo considerados por el sistema de compilación.
+
+## Correcciones realizadas
+
+Se actualizaron las rutas de compilación para incluir:
+
+```text
+brute_force.c
+greedy.c
+backtracking.c
+divide_conquer.c
+dp_topdown.c
+dp_bottomup.c
+incremental.c
+```
+
+## Validaciones realizadas
+
+La compilación mediante:
+
+```bash
+make
+```
+
+se completó sin errores.
+
+---
+
+# PROMPT 17
+
+## Prompt utilizado
+
+¿Es necesario modificar el Makefile para compilar los módulos de utilidades (`logger.c`, `timer.c` y `parser.c`)?
+
+## Respuesta IA
+
+La IA explicó que todos los módulos utilizados por la simulación deben estar presentes en las reglas de compilación para evitar errores de referencias indefinidas durante el enlazado.
+
+## Errores encontrados
+
+Los módulos de utilidades aún no estaban integrados completamente en el proceso de compilación.
+
+## Correcciones realizadas
+
+Se añadieron los archivos de la carpeta `src/utils/` a las listas de compilación del proyecto.
+
+## Validaciones realizadas
+
+La compilación y ejecución de la simulación se realizaron correctamente después de integrar los módulos.
+
+---
+
+# PROMPT 18
+
+## Prompt utilizado
+
+¿Cómo verificar que el Makefile compila correctamente todo el proyecto antes de la entrega final?
+
+## Respuesta IA
+
+La IA recomendó ejecutar una secuencia completa de limpieza, compilación y pruebas:
+
+```bash
+make clean
+make
+make test
+```
+
+De esta forma era posible detectar errores de dependencias, archivos faltantes o problemas de enlazado.
+
+## Errores encontrados
+
+No se detectaron errores después de las modificaciones realizadas al Makefile.
+
+## Correcciones realizadas
+
+Se realizaron ajustes menores para mantener consistencia entre los módulos compilados y la estructura del proyecto.
+
+## Validaciones realizadas
+
+La compilación completa y la ejecución de pruebas finalizaron exitosamente.
+
