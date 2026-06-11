@@ -938,5 +938,357 @@ make test
 
 se completó correctamente.
 
+---
+
+# PROMPT 31
+
+## Prompt utilizado
+
+¿Cómo integrar correctamente el Scheduler y el Memory Manager dentro de una simulación básica del sistema operativo?
+
+## Respuesta IA
+
+La IA sugirió crear una simulación donde:
+
+* Se inicialice el administrador de memoria.
+* Se cree el scheduler FIFO.
+* Se generen procesos de prueba.
+* Se asigne memoria a cada proceso.
+* Se ejecuten los procesos según el scheduler.
+
+De esta manera se lograría una interacción básica entre ambos módulos principales.
+
+## Errores encontrados
+
+Los módulos funcionaban por separado, pero aún no existía una integración dentro de una simulación completa.
+
+## Correcciones realizadas
+
+Se desarrolló un `main.c` capaz de coordinar memoria, procesos y planificación.
+
+## Validaciones realizadas
+
+La simulación ejecutó correctamente los procesos y las asignaciones de memoria.
+
+---
+
+# PROMPT 32
+
+## Prompt utilizado
+
+¿Cómo utilizar el módulo `timer` para medir el tiempo total de ejecución de la simulación?
+
+## Respuesta IA
+
+La IA recomendó iniciar el cronómetro al comienzo de la simulación mediante:
+
+```c
+timer_start();
+```
+
+y finalizarlo con:
+
+```c
+double elapsed = timer_stop();
+```
+
+mostrando posteriormente el tiempo obtenido.
+
+## Errores encontrados
+
+No existía una medición directa del rendimiento de la simulación.
+
+## Correcciones realizadas
+
+Se integró el módulo `timer` dentro del programa principal.
+
+## Validaciones realizadas
+
+La simulación mostró correctamente el tiempo total de ejecución al finalizar.
+
+---
+
+# PROMPT 33
+
+## Prompt utilizado
+
+¿Cómo aprovechar el módulo `logger` para registrar eventos importantes de la simulación?
+
+## Respuesta IA
+
+La IA sugirió registrar eventos como:
+
+* Inicio de simulación.
+* Creación de procesos.
+* Asignación de memoria.
+* Liberación de memoria.
+* Coalescencia.
+* Compactación.
+* Finalización de la simulación.
+
+## Errores encontrados
+
+Inicialmente no existía persistencia de eventos durante la ejecución.
+
+## Correcciones realizadas
+
+Se agregaron llamadas a `log_message()` en las etapas principales de la simulación.
+
+## Validaciones realizadas
+
+Los eventos comenzaron a registrarse correctamente durante la ejecución.
+
+---
+
+# PROMPT 34
+
+## Prompt utilizado
+
+La carpeta `data/logs` permanece vacía. ¿Cómo utilizarla dentro del proyecto?
+
+## Respuesta IA
+
+La IA recomendó emplear el módulo `logger` para generar automáticamente un archivo:
+
+```text
+data/logs/system.log
+```
+
+que almacenara información relevante de la simulación.
+
+## Errores encontrados
+
+La carpeta existía en la estructura del proyecto, pero no estaba siendo utilizada.
+
+## Correcciones realizadas
+
+Se integró el logger al flujo principal del simulador.
+
+## Validaciones realizadas
+
+Tras ejecutar la simulación se generó correctamente el archivo:
+
+```text
+data/logs/system.log
+```
+
+---
+
+# PROMPT 35
+
+## Prompt utilizado
+
+¿Cómo documentar las estructuras de datos implementadas dentro del proyecto?
+
+## Respuesta IA
+
+La IA recomendó crear un documento describiendo:
+
+* Stack.
+* Queue.
+* Circular Queue.
+* Linked List.
+* Doubly Linked List.
+
+Además sugirió incluir aplicaciones y operaciones principales de cada estructura.
+
+## Errores encontrados
+
+No existía documentación técnica sobre las estructuras implementadas.
+
+## Correcciones realizadas
+
+Se desarrolló el archivo:
+
+```text
+docs/arquitectura/estructuras.md
+```
+
+## Validaciones realizadas
+
+Se verificó que la documentación coincidiera con la implementación realizada.
+
+---
+
+# PROMPT 36
+
+## Prompt utilizado
+
+¿Cómo documentar el funcionamiento del sistema de memoria implementado?
+
+## Respuesta IA
+
+La IA sugirió describir:
+
+* MemoryBlock.
+* MemoryManager.
+* First Fit.
+* Best Fit.
+* Worst Fit.
+* Coalescencia.
+* Compactación.
+
+## Errores encontrados
+
+No existía documentación específica para el módulo de memoria.
+
+## Correcciones realizadas
+
+Se elaboró el archivo:
+
+```text
+docs/arquitectura/memoria.md
+```
+
+## Validaciones realizadas
+
+La documentación fue revisada y comparada con el código fuente correspondiente.
+
+---
+
+# PROMPT 37
+
+## Prompt utilizado
+
+¿Cómo documentar los algoritmos de planificación implementados en el proyecto?
+
+## Respuesta IA
+
+La IA recomendó describir:
+
+* FIFO.
+* SJF.
+* Round Robin.
+* Estados de proceso.
+* Cola de listos.
+
+También sugirió incluir diagramas sencillos de flujo de ejecución.
+
+## Errores encontrados
+
+No existía documentación sobre el scheduler.
+
+## Correcciones realizadas
+
+Se creó el archivo:
+
+```text
+docs/arquitectura/scheduler.md
+```
+
+## Validaciones realizadas
+
+La documentación fue contrastada con las implementaciones existentes.
+
+---
+
+# PROMPT 38
+
+## Prompt utilizado
+
+¿Qué información debería incluir el reporte final del proyecto?
+
+## Respuesta IA
+
+La IA sugirió incluir:
+
+* Objetivos.
+* Arquitectura general.
+* Estructuras de datos.
+* Gestión de memoria.
+* Planificación de procesos.
+* Algoritmos implementados.
+* Resultados experimentales.
+* Conclusiones.
+
+## Errores encontrados
+
+No existía una estructura inicial para el reporte final.
+
+## Correcciones realizadas
+
+Se definió la organización general del documento.
+
+## Validaciones realizadas
+
+La estructura cubría todos los requerimientos solicitados por el proyecto.
+
+---
+
+# PROMPT 39
+
+## Prompt utilizado
+
+¿La estructura final del repositorio cumple con las especificaciones proporcionadas para el proyecto?
+
+## Respuesta IA
+
+La IA comparó la estructura desarrollada con la estructura oficial propuesta y verificó la existencia de:
+
+* include/
+* src/
+* tests/
+* scripts/
+* reports/
+* data/
+* docs/
+
+además de los archivos principales requeridos.
+
+## Errores encontrados
+
+Se detectaron inicialmente carpetas creadas como archivos dentro de `reports`.
+
+## Correcciones realizadas
+
+Se corrigió la estructura de directorios y se verificó nuevamente el árbol completo.
+
+## Validaciones realizadas
+
+La organización final coincidió con la especificación del proyecto.
+
+---
+
+# PROMPT 40
+
+## Prompt utilizado
+
+¿Qué verificaciones finales deberían realizarse antes de la entrega del proyecto?
+
+## Respuesta IA
+
+La IA recomendó ejecutar una validación completa mediante:
+
+```bash
+make clean
+make
+make test
+
+./bin/main 1000
+
+python3 scripts/benchmark.py
+python3 scripts/graphs.py
+python3 scripts/validate_results.py
+```
+
+Además sugirió revisar:
+
+* Logs generados.
+* Reportes CSV.
+* Gráficas PNG.
+* Reportes PDF.
+* Documentación.
+
+## Errores encontrados
+
+No se detectaron errores críticos durante la validación final.
+
+## Correcciones realizadas
+
+Se realizaron ajustes menores de documentación y organización de archivos.
+
+## Validaciones realizadas
+
+El proyecto compiló, ejecutó pruebas y generó resultados correctamente, quedando listo para su entrega.
 
 
