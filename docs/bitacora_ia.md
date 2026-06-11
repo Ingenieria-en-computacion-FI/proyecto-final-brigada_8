@@ -561,3 +561,382 @@ Se realizaron ajustes menores para mantener consistencia entre los módulos comp
 
 La compilación completa y la ejecución de pruebas finalizaron exitosamente.
 
+---
+
+# PROMPT 19
+
+## Prompt utilizado
+
+¿Cómo implementar `benchmark.py` para medir el rendimiento de la simulación y almacenar los resultados en un archivo CSV?
+
+## Respuesta IA
+
+La IA propuso desarrollar un script en Python capaz de:
+
+* Ejecutar el simulador varias veces utilizando distintos tamaños de entrada.
+* Medir los tiempos de ejecución utilizando el módulo `time`.
+* Almacenar los resultados en una estructura de datos.
+* Exportar los resultados a un archivo CSV mediante la biblioteca `pandas`.
+
+La salida sugerida fue:
+
+```text
+reports/csv/benchmark.csv
+```
+
+con columnas similares a:
+
+```text
+size,time
+100,0.00118
+500,0.00136
+1000,0.00113
+5000,0.00145
+```
+
+## Errores encontrados
+
+No existía una implementación inicial para realizar mediciones automáticas del rendimiento del simulador.
+
+## Correcciones realizadas
+
+Se desarrolló el archivo `benchmark.py` para ejecutar pruebas y almacenar los resultados obtenidos en formato CSV.
+
+## Validaciones realizadas
+
+Se ejecutó:
+
+```bash
+python3 scripts/benchmark.py
+```
+
+y se verificó la generación correcta del archivo:
+
+```text
+reports/csv/benchmark.csv
+```
+
+Posteriormente, dicho archivo fue utilizado como entrada para la generación de gráficas mediante `graphs.py`.
+
+---
+
+# PROMPT 20
+
+## Prompt utilizado
+
+La gráfica se genera correctamente en formato PNG, pero no aparece ningún archivo dentro de `reports/pdf`. ¿Cómo puedo generar también una versión PDF de la gráfica?
+
+## Respuesta IA
+
+La IA explicó que `matplotlib` permite exportar una misma figura en múltiples formatos utilizando `plt.savefig()`.
+
+Sugirió agregar una segunda instrucción:
+
+```python
+plt.savefig(
+    "reports/pdf/benchmark.pdf"
+)
+```
+
+manteniendo la generación del archivo PNG existente.
+
+## Errores encontrados
+
+Inicialmente el script únicamente generaba:
+
+```text
+reports/png/benchmark.png
+```
+
+por lo que la carpeta `reports/pdf` permanecía vacía.
+
+## Correcciones realizadas
+
+Se modificó `graphs.py` para guardar la gráfica tanto en formato PNG como PDF.
+
+## Validaciones realizadas
+
+Se ejecutó:
+
+```bash
+python3 scripts/graphs.py
+```
+
+y se verificó la creación correcta de:
+
+```text
+reports/pdf/benchmark.pdf
+```
+
+---
+
+# PROMPT 21
+
+## Prompt utilizado
+
+El archivo `benchmark.csv` fue generado correctamente. ¿Cómo interpretar los resultados obtenidos y verificar que los datos son válidos?
+
+## Respuesta IA
+
+La IA explicó que cada fila representa una ejecución de prueba donde:
+
+* `size` corresponde al tamaño de entrada utilizado.
+* `time` representa el tiempo de ejecución medido.
+
+También indicó que era importante verificar:
+
+* Que existieran múltiples tamaños de entrada.
+* Que todos los tiempos fueran valores positivos.
+* Que el archivo mantuviera un formato CSV válido.
+
+Ejemplo:
+
+```text
+size,time
+100,0.00118
+500,0.00136
+1000,0.00113
+5000,0.00145
+```
+
+## Errores encontrados
+
+Existían dudas sobre si los resultados obtenidos eran correctos y suficientes para generar gráficas.
+
+## Correcciones realizadas
+
+Se revisó manualmente el contenido de `benchmark.csv` y se confirmó que los datos tenían el formato esperado.
+
+## Validaciones realizadas
+
+Se utilizó posteriormente `graphs.py` para leer el archivo y generar gráficas sin errores, confirmando la validez de los datos generados.
+
+---
+
+# PROMPT 22
+
+## Prompt utilizado
+
+¿Cómo debería actualizarse `algorithms.h` para integrar todos los algoritmos requeridos por el proyecto?
+
+## Respuesta IA
+
+La IA sugirió ampliar la interfaz para incluir funciones correspondientes a fuerza bruta, greedy, backtracking, divide y vencerás y programación dinámica, manteniendo compatibilidad con los algoritmos de memoria ya implementados.
+
+## Errores encontrados
+
+El archivo inicialmente sólo contemplaba First Fit, Best Fit y Worst Fit.
+
+## Correcciones realizadas
+
+Se agregaron los prototipos necesarios para los algoritmos restantes.
+
+## Validaciones realizadas
+
+El proyecto continuó compilando correctamente después de actualizar la interfaz.
+
+---
+
+# PROMPT 23
+
+## Prompt utilizado
+
+¿Cómo implementar `brute_force.c` respetando la estructura del proyecto?
+
+## Respuesta IA
+
+La IA propuso una búsqueda exhaustiva de bloques de memoria recorriendo todos los bloques disponibles para localizar posibles asignaciones.
+
+## Errores encontrados
+
+No existía implementación previa.
+
+## Correcciones realizadas
+
+Se creó el archivo `brute_force.c`.
+
+## Validaciones realizadas
+
+La compilación se realizó correctamente mediante:
+
+```bash
+make
+```
+
+---
+
+# PROMPT 24
+
+## Prompt utilizado
+
+¿Cómo implementar `greedy.c` utilizando los algoritmos de asignación de memoria ya existentes?
+
+## Respuesta IA
+
+La IA explicó que First Fit, Best Fit y Worst Fit son ejemplos clásicos de algoritmos voraces (Greedy) y sugirió reutilizar la lógica ya desarrollada para representar esta estrategia.
+
+## Errores encontrados
+
+No existía una representación explícita del enfoque Greedy.
+
+## Correcciones realizadas
+
+Se implementó un archivo que integra los algoritmos de asignación como ejemplos de estrategia voraz.
+
+## Validaciones realizadas
+
+La compilación se realizó sin errores.
+
+---
+
+# PROMPT 25
+
+## Prompt utilizado
+
+¿Cómo implementar `backtracking.c` para representar una búsqueda de asignaciones válidas?
+
+## Respuesta IA
+
+La IA sugirió una implementación recursiva sencilla capaz de explorar distintas combinaciones de asignación y retroceder cuando una solución no es válida.
+
+## Errores encontrados
+
+No existía implementación previa.
+
+## Correcciones realizadas
+
+Se desarrolló el archivo `backtracking.c` utilizando llamadas recursivas.
+
+## Validaciones realizadas
+
+La implementación compiló correctamente y se integró al proyecto.
+
+---
+
+# PROMPT 26
+
+## Prompt utilizado
+
+¿Cómo implementar `divide_conquer.c` para representar la estrategia Divide y Vencerás?
+
+## Respuesta IA
+
+La IA propuso dividir un conjunto de bloques de memoria en subproblemas más pequeños y resolverlos recursivamente antes de combinar los resultados.
+
+## Errores encontrados
+
+No existía implementación previa.
+
+## Correcciones realizadas
+
+Se creó el archivo `divide_conquer.c`.
+
+## Validaciones realizadas
+
+El código se compiló sin conflictos con los demás módulos.
+
+---
+
+# PROMPT 27
+
+## Prompt utilizado
+
+¿Cómo implementar `dp_topdown.c` utilizando programación dinámica descendente?
+
+## Respuesta IA
+
+La IA explicó el enfoque Top-Down basado en memoización y llamadas recursivas para evitar cálculos repetidos.
+
+## Errores encontrados
+
+No existía implementación previa.
+
+## Correcciones realizadas
+
+Se implementó un ejemplo funcional de programación dinámica descendente.
+
+## Validaciones realizadas
+
+La compilación se completó correctamente.
+
+---
+
+# PROMPT 28
+
+## Prompt utilizado
+
+¿Cómo implementar `dp_bottomup.c` utilizando programación dinámica ascendente?
+
+## Respuesta IA
+
+La IA propuso construir soluciones iterativamente desde casos simples hasta problemas más complejos mediante tablas de almacenamiento.
+
+## Errores encontrados
+
+No existía implementación previa.
+
+## Correcciones realizadas
+
+Se desarrolló el archivo `dp_bottomup.c`.
+
+## Validaciones realizadas
+
+La implementación se integró correctamente al proyecto.
+
+---
+
+# PROMPT 29
+
+## Prompt utilizado
+
+¿Cómo implementar `incremental.c` para representar una estrategia incremental?
+
+## Respuesta IA
+
+La IA explicó que la estrategia incremental consiste en construir una solución paso a paso agregando elementos de forma progresiva.
+
+## Errores encontrados
+
+No existía implementación previa.
+
+## Correcciones realizadas
+
+Se creó el archivo `incremental.c`.
+
+## Validaciones realizadas
+
+El módulo compiló correctamente junto con los demás algoritmos.
+
+---
+
+# PROMPT 30
+
+## Prompt utilizado
+
+¿Es necesario modificar el Makefile para que los algoritmos recién implementados sean compilados automáticamente?
+
+## Respuesta IA
+
+La IA recomendó agregar los nuevos archivos fuente a las reglas de compilación para asegurar que formen parte del ejecutable principal y de las pruebas.
+
+## Errores encontrados
+
+Los nuevos archivos no estaban siendo considerados por el Makefile.
+
+## Correcciones realizadas
+
+Se actualizó la lista de archivos fuente utilizada por el sistema de compilación.
+
+## Validaciones realizadas
+
+La ejecución de:
+
+```bash
+make
+make test
+```
+
+se completó correctamente.
+
+
+
